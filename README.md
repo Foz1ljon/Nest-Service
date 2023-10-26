@@ -45,5 +45,11 @@ $ npm run start:dev
 $ npm run start:prod
 
 ```
+## API
+```
+http://localhost:port/api/docs
+http://localhost:port/graphql
+
+```
 
 
