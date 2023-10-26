@@ -1,0 +1,104 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateEventDto {
+  description: String!
+  endDate: DateTime!
+  startDate: DateTime!
+  title: String!
+  user: Int
+}
+
+input CreateLocationDto {
+  latitude: String!
+  longtitude: String!
+}
+
+input CreateUserDto {
+  email: String!
+  name: String!
+  password: String!
+  phone_number: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Event {
+  description: String!
+  endDate: DateTime!
+  id: ID!
+  startDate: DateTime!
+  title: String!
+  user: User!
+}
+
+input FindEventDto {
+  date_begin: DateTime
+  date_end: DateTime
+}
+
+type Location {
+  event: Event!
+  id: ID!
+  latitude: String!
+  longtitude: String!
+}
+
+input LoginUserDto {
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  addEvent(createEvent: CreateEventDto!): Event!
+  addLocation(createLocation: CreateLocationDto!): Location!
+  login(loginUser: LoginUserDto!): User!
+  register(createUser: CreateUserDto!): User!
+  remove(id: ID!): Float!
+  removeLocation(id: ID!): Float!
+  removeUser(id: ID!): Float!
+  updateEvent(id: ID!, updateEvent: UpdateEventDto!): Event!
+  updateLocation(id: ID!, updateLocation: UpdateLocationDto!): Location!
+  updateUser(id: ID!, updateUser: UpdateUserDto!): User!
+}
+
+type Query {
+  getAllEvent(findAll: FindEventDto!): [Event!]!
+  getAllLocation: [Location!]!
+  getAllUser: [User!]!
+  getEvent(id: ID!): Event!
+  getLocation(id: ID!): Location!
+  getUser(id: ID!): User!
+}
+
+input UpdateEventDto {
+  description: String
+  endDate: DateTime
+  startDate: DateTime
+  title: String
+}
+
+input UpdateLocationDto {
+  latitude: String!
+  longtitude: String!
+}
+
+input UpdateUserDto {
+  email: String
+  name: String
+  password: String
+  phone_number: String
+}
+
+type User {
+  email: String!
+  events: [Event!]!
+  id: ID!
+  name: String!
+  password: String!
+  phone_number: String!
+}
